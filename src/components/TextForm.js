@@ -13,6 +13,14 @@ export default function TextForm(){
     const handleDownClick =() =>{
         setText(text.toLowerCase());
     }
+    const handleCopy = () => {
+        var text = document.getElementById("myBox");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+    const handleClear = () => {
+        setText(' ');
+    }
     const handleOnChange = (event) => {
         console.log('On-Change');
         setText(event.target.value);
@@ -47,7 +55,10 @@ export default function TextForm(){
         </div>
         <button className='btn-btn-primary mx-2' onClick={handleUpClick}>Convert to Uppercase</button>
         <button className='btn-btn-primary mx-2' onClick={handleDownClick}>Convert to Lowercase</button>
-        <button className='btn-btn-primary mx-2>Word Rank' onClick={handleWordRank}>Word Rank</button>
+        <button className='btn-btn-primary mx-2' onClick={handleCopy}>Copy Text</button>
+        <button className='btn-btn-primary mx-2' onClick={handleClear}>Clear Text</button>
+        <button className='btn-btn-primary mx-2' onClick={handleWordRank}>Word Rank</button>
+
         </div>
         <div className='container my-3'>
             <h1>Text summary</h1>

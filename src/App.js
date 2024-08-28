@@ -4,6 +4,12 @@ import TextForm from './components/TextForm';
 import Accordion from './components/Accordion';
 import { useState } from 'react';
 import Alert from './components/Alert';
+import{
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
 
 function App() {
   const [mode,setMode] = useState('light');
@@ -32,12 +38,16 @@ function App() {
   }
   return (
     <>
+    <Router>
     <NavBar title="Text"  mode = {mode} toggleMode={toggleMode}/>
     <Alert alert = {alert} />
     <div className="container my-3">
-      <TextForm showAlert= {showAlert} mode = {mode} />
-      {/* <Accordion /> */}
+      <Routes>
+        <Route path="/" element={<TextForm showAlert= {showAlert} mode = {mode} />} />
+        <Route path="/about" element={<Accordion mode={mode}/>} />
+      </Routes>
     </div>
+    </Router>
     </>
   );
 }

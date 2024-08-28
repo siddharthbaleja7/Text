@@ -1,28 +1,17 @@
-import React,{useState} from "react";
+import React from "react";
 
-export default function Accordion(){
-    const [myystyle,setMystyle] = useState({
-        color: 'black',
-        backgroundColor: 'white',
-    })
-    const [btn,setbtn] = useState('Enable Dark Mode');
-    
-    const toggle =() => {
-        if(myystyle.color === 'black'){
-            setMystyle({
-                color: 'white',
-                backgroundColor: 'black',
+export default function Accordion(props){
+    // const [myystyle,setMystyle] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white',
+    // })
 
-            })
-            setbtn('Enable Light Mode');
-        } else{
-            setMystyle({
-                color: 'black',
-                backgroundColor: 'white',
-            })
-            setbtn('Enable Dark Mode');
-        }
+    let myystyle = {
+        color: props.mode === 'dark' ? 'white' : 'black',
+        backgroundColor : props.mode === 'dark' ? '#042743' : 'white',
     }
+    
+
     return(
         <div className = "container" style={myystyle}>
             <h1 className="my-3">About us</h1>
@@ -64,7 +53,7 @@ export default function Accordion(){
                     </div>
                 </div>
             </div>
-            <button onClick={toggle} className="btn btn-primary my-3">{btn}</button>
+            {/* <button onClick={toggle} className="btn btn-primary my-3">{btn}</button> */}
         </div>
     )
 }
